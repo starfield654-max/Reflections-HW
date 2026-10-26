@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reflection Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            color: #663399;
+            margin: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #cc3399;
+        }
+
+        h2 {
+            color: #9933cc;
+        }
+
+        .box {
+            background-color: #ffffff;
+            border: 2px solid #e699cc;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        textarea {
+            width: 95%;
+            height: 150px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            border: 2px solid #cc99ff;
+            background-color: #fffaff;
+        }
+
+        button {
+            background-color: #cc3399;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9933cc;
+        }
+
+        #status {
+            color: #228855;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Design Reflection</h1>
+
+    <div class="box">
+        <p>
+            This page is about three things I changed or improved
+            in my portal design.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>1. Create Reflection Page</h2>
+        <p>
+            I made this page to write about the changes I made
+            to my design.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>2. Design Improvements</h2>
+        <p>
+            I changed the colors, fonts, and spacing to make
+            my page look better and easier to read.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>3. Save My Work</h2>
+        <p>
+            I used JavaScript and localStorage so my reflection
+            stays saved when I close or refresh the page.
+        </p>
+    </div>
+
+    <h2>My Three Improvements</h2>
+
+    <div class="box">
+        <p>Write three things you improved in your design below.</p>
+
+        <textarea id="reflection" placeholder="1. I changed...
+
+2. I improved...
+
+3. I added..."></textarea>
+
+        <br>
+
+        <button id="saveButton">Save My Reflection</button>
+        <button id="clearButton">Clear</button>
+
+        <p id="status"></p>
+    </div>
+
+    <h2>Things I Learned</h2>
+
+    <ul>
+        <li>I learned how to use CSS colors.</li>
+        <li>I learned how to make my page look better.</li>
+        <li>I learned how to save text using localStorage.</li>
+    </ul>
+
+    <script>
+        const reflection = document.getElementById("reflection");
+        const status = document.getElementById("status");
+
+        reflection.value = localStorage.getItem("myReflection") || "";
+
+        document.getElementById("saveButton").addEventListener("click", function() {
+            localStorage.setItem("myReflection", reflection.value);
+            status.textContent = "Reflection saved!";
+        });
+
+        reflection.addEventListener("input", function() {
+            localStorage.setItem("myReflection", reflection.value);
+            status.textContent = "Saved automatically!";
+        });
+
+        document.getElementById("clearButton").addEventListener("click", function() {
+            reflection.value = "";
+            localStorage.removeItem("myReflection");
+            status.textContent = "Reflection cleared!";
+        });
+    </script>
+
+</body>
+</html>
